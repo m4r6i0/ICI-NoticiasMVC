@@ -1,0 +1,54 @@
+﻿@using ICI_NoticiasMVC.Web.Models
+@model NoticiaViewModel
+
+<form id="noticiaForm">
+    <input type="hidden" asp-for="Noticia.Id" />
+
+    <div class="form-group">
+        <label asp-for="Noticia.Titulo"></label>
+        <input asp-for="Noticia.Titulo" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Noticia.Conteudo"></label>
+        <textarea asp-for="Noticia.Conteudo" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Noticia.DataPublicacao"></label>
+        <input asp-for="Noticia.DataPublicacao" type="date" class="form-control" />
+    </div>
+
+    <!-- Tags -->
+    <div class="form-group">
+        <label asp-for="Noticia.SelectedTagIds">Tags</label>
+        <select asp-for="Noticia.SelectedTagIds"
+                asp-items="Model.AvailableTags"
+                class="form-control select2-tags">
+        </select>
+    </div>
+
+    <!-- Usuário -->
+    <div class="form-group">
+        <label asp-for="Noticia.UsuarioId">Usuário</label>
+        <select asp-for="Noticia.UsuarioId"
+                asp-items="Model.AvailableUsuarios"
+                class="form-control select2-user">
+            <option value="">Selecione o autor</option>
+        </select>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-success">Salvar</button>
+</form>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.select2').select2({
+                placeholder: "Selecione uma ou mais tags",
+                width: '100%'
+            });
+        });
+    </script>
+}

@@ -1,0 +1,27 @@
+﻿@using ICI_NoticiasMVC.Application.DTOs
+@model IEnumerable<TagDTO>
+
+<h2>Tags</h2>
+
+<a class="btn btn-primary" asp-action="Create">Nova Tag</a>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tag in Model)
+        {
+            <tr>
+                <td>@tag.Nome</td>
+                <td>
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@tag.Id">Editar</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@tag.Id">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,11 @@
+﻿@model NoticiaViewModel
+
+<h2>Confirmar exclusão</h2>
+
+<p>Você tem certeza que deseja excluir a notícia <strong>@Model.Noticia.Titulo</strong>?</p>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" name="id" asp-for="@Model.Noticia.Id" />
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

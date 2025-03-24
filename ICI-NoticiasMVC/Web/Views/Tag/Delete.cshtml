@@ -1,0 +1,14 @@
+﻿@using ICI_NoticiasMVC.Core.Entities
+@model ICI_NoticiasMVC.Application.DTOs.TagDTO
+
+<h2>Deseja realmente excluir a Tag abaixo?</h2>
+
+<div>
+    <h4>@Model.Nome</h4>
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

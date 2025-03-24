@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ICI_NoticiasMVC.Application.DTOs.UsuarioDTO>
+
+<h2>Usuários</h2>
+
+<a class="btn btn-primary mb-3" asp-action="Create">Novo Usuário</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var usuario in Model)
+        {
+            <tr>
+                <td>@usuario.Nome</td>
+                <td>@usuario.Email</td>
+                <td>
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@usuario.Id">Editar</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@usuario.Id">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,42 @@
+﻿@using ICI_NoticiasMVC.Application.DTOs
+@model IEnumerable<NoticiaDTO>
+
+<h2>Notícias</h2>
+
+<div id="noticiaList">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Data</th>
+                <th>Tags</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var noticia in Model)
+            {
+                <tr>
+                    <td>@noticia.Titulo</td>
+                    <td>@noticia.DataPublicacao.ToShortDateString()</td>
+                    <td>
+                        @string.Join(", ", noticia.Tags.Select(t => t.Nome))
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-warning" onclick="carregarFormulario(@noticia.Id)">Editar</button>
+                        <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@noticia.Id">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<hr />
+<button class="btn btn-primary" onclick="carregarFormulario()">Nova Notícia</button>
+
+<div id="formContainer"></div>
+
+@section Scripts {
+    <script src="~/js/noticia.js"></script>
+}

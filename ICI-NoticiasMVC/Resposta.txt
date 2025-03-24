@@ -1,0 +1,11 @@
+1) Qual fluxo os dados de um formulário em uma View deve percorrer até ser armazenado na fonte de dados em um projeto DDD?
+
+	R: A View envia os dados via formulário (ou Ajax) para o Controller, que chama o Application Service. O Application Service converte os dados para a entidade de domínio (via DTO ou AutoMapper) e delega ao repositório (ou Unit of Work), que usa o Entity Framework para persistir no banco. Esse fluxo garante separação de responsabilidades e aderência à arquitetura em camadas do DDD.
+
+2) Nossa aplicação necessita que um usuário esteja autenticado para poder navegar nas funcionalidades, em .NET, como podemos desenvolver essa autenticação?
+
+	R: Podemos utilizar o sistema de autenticação do ASP.NET Core Identity, implementando middleware de autenticação e autorização via cookies, JWT ou outros providers (OAuth, etc). Também é possível usar `[Authorize]` nos controllers ou actions específicas para restringir o acesso.
+
+3) Estamos enfrentando problemas de performance na página inicial de um portal que tem muitos acessos. Essa página exibe eventos separados em 6 sessões do HTML, filtrados, cada sessão, por uma regra de negócio. São realizados 6 consultas via ORM. O que podemos fazer para mitigar esse problema?
+
+	R: Podemos aplicar técnicas como: execução paralela das consultas (com `Task.WhenAll`), uso de cache (MemoryCache, Redis), otimização com Projeções (`Select`) para reduzir o volume de dados retornados, e inclusive precarga (pré-renderização) se o conteúdo for relativamente estático. Também pode-se avaliar se a arquitetura de microserviços ou CQRS é apropriada para isolar e otimizar essas áreas.
