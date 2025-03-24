@@ -63,7 +63,7 @@ O sistema permite:
 
 Este projeto foi desenvolvido com base no enunciado técnico fornecido. Para visualizar as respostas do candidato ao desafio, acesse:
 
-📎 [Respostas.txt](Respostas.txt)
+📎 [Respostas.txt](Resposta.txt)
 
 ---
 
